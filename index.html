@@ -1,0 +1,1428 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Safi Seaside Tours - Private Tours from Halifax</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Poppins:wght@300;400;500;600;700&display=swap');
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        :root {
+            --primary: #0c4a6e;
+            --secondary: #0ea5e9;
+            --accent: #f59e0b;
+            --dark: #1e293b;
+            --light: #f8fafc;
+        }
+        
+        body {
+            font-family: 'Poppins', sans-serif;
+            line-height: 1.6;
+            color: var(--dark);
+            overflow-x: hidden;
+        }
+        
+        /* Navigation */
+        nav {
+            background: rgba(12, 74, 110, 0.95);
+            backdrop-filter: blur(10px);
+            padding: 1rem 2rem;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 4px 30px rgba(0,0,0,0.1);
+        }
+        
+        .nav-container {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .logo {
+            color: white;
+            font-size: 1.6rem;
+            font-weight: 700;
+            font-family: 'Playfair Display', serif;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+        
+        .nav-links {
+            display: flex;
+            gap: 2.5rem;
+            list-style: none;
+        }
+        
+        .nav-links a {
+            color: white;
+            text-decoration: none;
+            transition: all 0.3s;
+            cursor: pointer;
+            font-weight: 500;
+            position: relative;
+        }
+        
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: var(--accent);
+            transition: width 0.3s;
+        }
+        
+        .nav-links a:hover::after {
+            width: 100%;
+        }
+        
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(135deg, rgba(12, 74, 110, 0.9) 0%, rgba(14, 165, 233, 0.8) 100%),
+                        url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" width="1920" height="1080"><defs><linearGradient id="a" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="%230c4a6e"/><stop offset="1" stop-color="%230ea5e9"/></linearGradient></defs><rect width="1920" height="1080" fill="url(%23a)"/><g fill="none" stroke="%23fff" stroke-width="2" opacity="0.1"><path d="M0 540 Q480 400 960 540 T1920 540"/><path d="M0 600 Q480 460 960 600 T1920 600"/><path d="M0 660 Q480 520 960 660 T1920 660"/></g><circle cx="300" cy="200" r="100" fill="%23fff" opacity="0.05"/><circle cx="1600" cy="300" r="150" fill="%23fff" opacity="0.05"/><circle cx="800" cy="700" r="80" fill="%23fff" opacity="0.08"/></svg>');
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            color: white;
+            position: relative;
+        }
+        
+        .hero::before {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            height: 200px;
+            background: linear-gradient(to top, white, transparent);
+        }
+        
+        .hero-content {
+            position: relative;
+            z-index: 1;
+            animation: fadeInUp 1s ease-out;
+        }
+        
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        .hero-content h1 {
+            font-size: 4rem;
+            margin-bottom: 1rem;
+            font-family: 'Playfair Display', serif;
+            font-weight: 700;
+            text-shadow: 2px 2px 20px rgba(0,0,0,0.3);
+            line-height: 1.2;
+        }
+        
+        .hero-content .subtitle {
+            font-size: 1.8rem;
+            margin-bottom: 2.5rem;
+            font-weight: 300;
+            opacity: 0.95;
+        }
+        
+        .btn {
+            background: var(--accent);
+            color: white;
+            padding: 1.2rem 3rem;
+            text-decoration: none;
+            border-radius: 50px;
+            font-weight: 600;
+            display: inline-block;
+            transition: all 0.3s;
+            border: none;
+            cursor: pointer;
+            font-size: 1.1rem;
+            box-shadow: 0 10px 30px rgba(245, 158, 11, 0.3);
+        }
+        
+        .btn:hover {
+            background: #d97706;
+            transform: translateY(-3px);
+            box-shadow: 0 15px 40px rgba(245, 158, 11, 0.4);
+        }
+        
+        .btn-outline {
+            background: transparent;
+            border: 2px solid white;
+            color: white;
+            box-shadow: none;
+        }
+        
+        .btn-outline:hover {
+            background: white;
+            color: var(--primary);
+        }
+        
+        /* Sections */
+        .section {
+            padding: 6rem 2rem;
+            max-width: 1400px;
+            margin: 0 auto;
+            display: none;
+        }
+        
+        .section.active {
+            display: block;
+            animation: fadeIn 0.5s ease-out;
+        }
+        
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+        
+        .section-title {
+            text-align: center;
+            font-size: 3rem;
+            margin-bottom: 1rem;
+            color: var(--primary);
+            font-family: 'Playfair Display', serif;
+            font-weight: 700;
+        }
+        
+        .section-subtitle {
+            text-align: center;
+            font-size: 1.2rem;
+            color: #64748b;
+            margin-bottom: 4rem;
+            max-width: 700px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        
+        /* Tours Grid */
+        .tours-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 2.5rem;
+            margin-top: 3rem;
+        }
+        
+        .tour-card {
+            background: white;
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.1);
+            transition: all 0.4s;
+            position: relative;
+        }
+        
+        .tour-card:hover {
+            transform: translateY(-15px);
+            box-shadow: 0 20px 60px rgba(0,0,0,0.15);
+        }
+        
+        .tour-image {
+            height: 280px;
+            background: linear-gradient(135deg, #0c4a6e 0%, #0ea5e9 100%);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .tour-image::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" width="400" height="300"><rect width="400" height="300" fill="%230c4a6e"/><circle cx="100" cy="80" r="60" fill="%230ea5e9" opacity="0.3"/><circle cx="300" cy="200" r="80" fill="%230ea5e9" opacity="0.2"/><path d="M0 250 Q100 200 200 250 T400 250 V300 H0 Z" fill="%23f59e0b" opacity="0.4"/></svg>');
+            background-size: cover;
+        }
+        
+        .tour-icon {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            font-size: 5rem;
+            z-index: 1;
+            animation: float 3s ease-in-out infinite;
+        }
+        
+        @keyframes float {
+            0%, 100% { transform: translate(-50%, -50%) translateY(0); }
+            50% { transform: translate(-50%, -50%) translateY(-10px); }
+        }
+        
+        .tour-badge {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            background: var(--accent);
+            color: white;
+            padding: 0.5rem 1rem;
+            border-radius: 20px;
+            font-weight: 600;
+            font-size: 0.9rem;
+            z-index: 2;
+        }
+        
+        .tour-content {
+            padding: 2rem;
+        }
+        
+        .tour-content h3 {
+            color: var(--primary);
+            margin-bottom: 1rem;
+            font-size: 1.8rem;
+            font-family: 'Playfair Display', serif;
+        }
+        
+        .tour-content p {
+            color: #64748b;
+            margin-bottom: 1.5rem;
+            line-height: 1.8;
+        }
+        
+        .tour-price {
+            color: var(--accent);
+            font-size: 2rem;
+            font-weight: 700;
+            margin: 1.5rem 0;
+        }
+        
+        .tour-features {
+            list-style: none;
+            margin: 1.5rem 0;
+        }
+        
+        .tour-features li {
+            padding: 0.5rem 0;
+            color: #64748b;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+        
+        .tour-features li i {
+            color: var(--secondary);
+        }
+        
+        /* Features Section */
+        .features {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2.5rem;
+            margin: 4rem 0;
+        }
+        
+        .feature {
+            text-align: center;
+            padding: 3rem 2rem;
+            background: linear-gradient(135deg, #f8fafc 0%, #e2e8f0 100%);
+            border-radius: 20px;
+            transition: all 0.4s;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .feature::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
+            opacity: 0;
+            transition: opacity 0.4s;
+        }
+        
+        .feature:hover::before {
+            opacity: 1;
+        }
+        
+        .feature:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+        }
+        
+        .feature:hover * {
+            color: white !important;
+        }
+        
+        .feature-icon {
+            font-size: 4rem;
+            margin-bottom: 1.5rem;
+            position: relative;
+            z-index: 1;
+        }
+        
+        .feature h3 {
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+            color: var(--primary);
+            position: relative;
+            z-index: 1;
+            font-family: 'Playfair Display', serif;
+        }
+        
+        .feature p {
+            color: #64748b;
+            position: relative;
+            z-index: 1;
+        }
+        
+        /* Testimonials */
+        .testimonials {
+            background: linear-gradient(135deg, #f8fafc 0%, #e2e8f0 100%);
+            padding: 4rem;
+            border-radius: 30px;
+            margin: 4rem 0;
+        }
+        
+        .testimonial {
+            background: white;
+            padding: 2.5rem;
+            border-radius: 20px;
+            margin-bottom: 2rem;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.08);
+            position: relative;
+            transition: transform 0.3s;
+        }
+        
+        .testimonial:hover {
+            transform: translateX(10px);
+        }
+        
+        .testimonial::before {
+            content: '"';
+            position: absolute;
+            top: -20px;
+            left: 20px;
+            font-size: 6rem;
+            color: var(--secondary);
+            opacity: 0.2;
+            font-family: Georgia, serif;
+        }
+        
+        .testimonial-text {
+            font-style: italic;
+            margin-bottom: 1.5rem;
+            color: #475569;
+            font-size: 1.1rem;
+            line-height: 1.8;
+        }
+        
+        .testimonial-author {
+            font-weight: 600;
+            color: var(--primary);
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+        
+        .testimonial-stars {
+            color: var(--accent);
+            margin-bottom: 1rem;
+        }
+        
+        /* Gallery */
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+        
+        .gallery-item {
+            height: 350px;
+            border-radius: 20px;
+            overflow: hidden;
+            position: relative;
+            cursor: pointer;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+        }
+        
+        .gallery-item::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(135deg, rgba(12, 74, 110, 0.8) 0%, rgba(14, 165, 233, 0.6) 100%);
+            transition: opacity 0.4s;
+        }
+        
+        .gallery-item:hover::before {
+            opacity: 0.3;
+        }
+        
+        .gallery-item:hover {
+            transform: scale(1.05);
+            transition: transform 0.4s;
+        }
+        
+        .gallery-label {
+            position: absolute;
+            bottom: 20px;
+            left: 20px;
+            color: white;
+            font-size: 1.5rem;
+            font-weight: 600;
+            z-index: 1;
+            font-family: 'Playfair Display', serif;
+        }
+        
+        /* Specific Gallery Images */
+        .gallery-lighthouse {
+            background: linear-gradient(135deg, rgba(12, 74, 110, 0.7), rgba(14, 165, 233, 0.5)),
+                        url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" width="400" height="400"><rect fill="%230c4a6e" width="400" height="400"/><circle cx="200" cy="100" r="60" fill="%23fbbf24"/><rect x="180" y="200" width="40" height="120" fill="%23fff"/><polygon points="160,200 240,200 200,120" fill="%23dc2626"/><path d="M0 320 Q100 280 200 320 T400 320 V400 H0 Z" fill="%23059669"/></svg>');
+            background-size: cover;
+        }
+        
+        .gallery-ocean {
+            background: linear-gradient(135deg, rgba(14, 165, 233, 0.7), rgba(6, 182, 212, 0.5)),
+                        url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" width="400" height="400"><defs><linearGradient id="ocean" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="%230ea5e9"/><stop offset="1" stop-color="%2306b6d4"/></linearGradient></defs><rect fill="url(%23ocean)" width="400" height="400"/><path d="M0 200 Q100 150 200 200 T400 200" stroke="%23fff" stroke-width="3" fill="none" opacity="0.3"/><path d="M0 250 Q100 200 200 250 T400 250" stroke="%23fff" stroke-width="3" fill="none" opacity="0.2"/></svg>');
+            background-size: cover;
+        }
+        
+        .gallery-town {
+            background: linear-gradient(135deg, rgba(220, 38, 38, 0.7), rgba(245, 158, 11, 0.5)),
+                        url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" width="400" height="400"><rect fill="%23dc2626" width="400" height="400"/><rect x="50" y="200" width="60" height="100" fill="%23fbbf24"/><polygon points="50,200 110,200 80,150" fill="%23dc2626"/><rect x="150" y="220" width="50" height="80" fill="%230ea5e9"/><polygon points="150,220 200,220 175,180" fill="%23059669"/><rect x="250" y="210" width="70" height="90" fill="%23f59e0b"/><polygon points="250,210 320,210 285,160" fill="%236366f1"/></svg>');
+            background-size: cover;
+        }
+        
+        .gallery-boat {
+            background: linear-gradient(135deg, rgba(6, 182, 212, 0.7), rgba(14, 165, 233, 0.5)),
+                        url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" width="400" height="400"><rect fill="%2306b6d4" width="400" height="400"/><path d="M100 250 L150 200 L250 200 L300 250 L100 250" fill="%23fff"/><rect x="170" y="150" width="10" height="50" fill="%23475569"/><polygon points="180,150 180,180 220,165" fill="%23dc2626"/><ellipse cx="200" cy="250" rx="120" ry="20" fill="%230ea5e9" opacity="0.5"/></svg>');
+            background-size: cover;
+        }
+        
+        .gallery-lobster {
+            background: linear-gradient(135deg, rgba(220, 38, 38, 0.7), rgba(245, 158, 11, 0.5)),
+                        url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" width="400" height="400"><rect fill="%23dc2626" width="400" height="400"/><ellipse cx="200" cy="200" rx="100" ry="60" fill="%23f59e0b"/><circle cx="170" cy="180" r="8" fill="%23000"/><circle cx="230" cy="180" r="8" fill="%23000"/><path d="M150 200 Q120 220 110 250" stroke="%23f59e0b" stroke-width="8" fill="none"/><path d="M250 200 Q280 220 290 250" stroke="%23f59e0b" stroke-width="8" fill="none"/></svg>');
+            background-size: cover;
+        }
+        
+        .gallery-sunset {
+            background: linear-gradient(135deg, rgba(245, 158, 11, 0.8), rgba(249, 115, 22, 0.6)),
+                        url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" width="400" height="400"><defs><linearGradient id="sunset" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="%23f59e0b"/><stop offset="0.5" stop-color="%23f97316"/><stop offset="1" stop-color="%23dc2626"/></linearGradient></defs><rect fill="url(%23sunset)" width="400" height="400"/><circle cx="200" cy="150" r="70" fill="%23fbbf24"/><path d="M0 300 L400 300 L400 400 L0 400 Z" fill="%230c4a6e"/></svg>');
+            background-size: cover;
+        }
+        
+        /* FAQ */
+        .faq-item {
+            background: white;
+            padding: 2rem;
+            margin-bottom: 1.5rem;
+            border-radius: 15px;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.08);
+            border-left: 4px solid var(--secondary);
+            transition: all 0.3s;
+        }
+        
+        .faq-item:hover {
+            border-left-color: var(--accent);
+            transform: translateX(5px);
+        }
+        
+        .faq-question {
+            font-weight: 600;
+            color: var(--primary);
+            margin-bottom: 1rem;
+            font-size: 1.2rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+        
+        .faq-answer {
+            color: #64748b;
+            line-height: 1.8;
+        }
+        
+        /* Contact Form */
+        .contact-container {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 3rem;
+            align-items: start;
+        }
+        
+        .contact-form {
+            background: white;
+            padding: 3rem;
+            border-radius: 25px;
+            box-shadow: 0 15px 50px rgba(0,0,0,0.1);
+        }
+        
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+        
+        .form-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+            color: var(--primary);
+            font-weight: 600;
+        }
+        
+        .form-group input,
+        .form-group textarea,
+        .form-group select {
+            width: 100%;
+            padding: 1rem;
+            border: 2px solid #e2e8f0;
+            border-radius: 12px;
+            font-size: 1rem;
+            transition: all 0.3s;
+            font-family: 'Poppins', sans-serif;
+        }
+        
+        .form-group input:focus,
+        .form-group textarea:focus,
+        .form-group select:focus {
+            outline: none;
+            border-color: var(--secondary);
+            box-shadow: 0 0 0 3px rgba(14, 165, 233, 0.1);
+        }
+        
+        .form-group textarea {
+            resize: vertical;
+            min-height: 150px;
+        }
+        
+        .contact-info-card {
+            background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
+            color: white;
+            padding: 3rem;
+            border-radius: 25px;
+            height: 100%;
+        }
+        
+        .contact-info-card h3 {
+            margin-bottom: 2rem;
+            font-size: 2rem;
+            font-family: 'Playfair Display', serif;
+        }
+        
+        .contact-item {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            margin-bottom: 2rem;
+            padding: 1rem;
+            background: rgba(255,255,255,0.1);
+            border-radius: 12px;
+            transition: all 0.3s;
+        }
+        
+        .contact-item:hover {
+            background: rgba(255,255,255,0.2);
+            transform: translateX(5px);
+        }
+        
+        .contact-item i {
+            font-size: 1.5rem;
+            color: var(--accent);
+        }
+        
+        /* About Section */
+        .about-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            align-items: center;
+        }
+        
+        .about-image-card {
+            background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
+            height: 500px;
+            border-radius: 30px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 8rem;
+            color: white;
+            position: relative;
+            overflow: hidden;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.2);
+        }
+        
+        .about-image-card::before {
+            content: '';
+            position: absolute;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(255,255,255,0.1) 1px, transparent 1px);
+            background-size: 30px 30px;
+            animation: movePattern 20s linear infinite;
+        }
+        
+        @keyframes movePattern {
+            0% { transform: translate(0, 0); }
+            100% { transform: translate(30px, 30px); }
+        }
+        
+        .about-text h3 {
+            color: var(--primary);
+            font-size: 2.5rem;
+            margin-bottom: 1.5rem;
+            font-family: 'Playfair Display', serif;
+        }
+        
+        .about-text p {
+            margin-bottom: 1.5rem;
+            font-size: 1.1rem;
+            line-height: 1.9;
+            color: #475569;
+        }
+        
+        .about-list {
+            list-style: none;
+            margin: 2rem 0;
+        }
+        
+        .about-list li {
+            padding: 1rem;
+            margin-bottom: 0.8rem;
+            background: #f8fafc;
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            transition: all 0.3s;
+        }
+        
+        .about-list li:hover {
+            background: var(--secondary);
+            color: white;
+            transform: translateX(10px);
+        }
+        
+        .about-list li i {
+            color: var(--accent);
+            font-size: 1.2rem;
+        }
+        
+        /* Footer */
+        footer {
+            background: linear-gradient(135deg, var(--primary) 0%, #1e3a5f 100%);
+            color: white;
+            padding: 4rem 2rem 2rem;
+            margin-top: 6rem;
+        }
+        
+        .footer-content {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 3rem;
+            margin-bottom: 3rem;
+        }
+        
+        .footer-section h3 {
+            margin-bottom: 1.5rem;
+            color: var(--accent);
+            font-family: 'Playfair Display', serif;
+            font-size: 1.5rem;
+        }
+        
+        .footer-section p {
+            margin: 0.8rem 0;
+            opacity: 0.9;
+        }
+        
+        .footer-section a {
+            color: white;
+            text-decoration: none;
+            display: block;
+            margin: 0.8rem 0;
+            opacity: 0.9;
+            transition: all 0.3s;
+        }
+        
+        .footer-section a:hover {
+            color: var(--accent);
+            opacity: 1;
+            transform: translateX(5px);
+        }
+        
+        .social-links {
+            display: flex;
+            gap: 1rem;
+            margin-top: 1rem;
+        }
+        
+        .social-links a {
+            width: 45px;
+            height: 45px;
+            background: rgba(255,255,255,0.1);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s;
+        }
+        
+        .social-links a:hover {
+            background: var(--accent);
+            transform: translateY(-5px);
+        }
+        
+        .footer-bottom {
+            text-align: center;
+            padding-top: 2rem;
+            border-top: 1px solid rgba(255,255,255,0.1);
+        }
+        
+        /* Mobile Menu */
+        .mobile-menu-btn {
+            display: none;
+            background: none;
+            border: none;
+            color: white;
+            font-size: 1.5rem;
+            cursor: pointer;
+        }
+        
+        /* Responsive */
+        @media (max-width: 768px) {
+            .hero-content h1 {
+                font-size: 2.5rem;
+            }
+            
+            .hero-content .subtitle {
+                font-size: 1.2rem;
+            }
+            
+            .nav-links {
+                display: none;
+            }
+            
+            .mobile-menu-btn {
+                display: block;
+            }
+            
+            .section-title {
+                font-size: 2rem;
+            }
+            
+            .about-content,
+            .contact-container {
+                grid-template-columns: 1fr;
+            }
+            
+            .tours-grid,
+            .features,
+            .gallery-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav>
+        <div class="nav-container">
+            <div class="logo">
+                <i class="fas fa-water"></i>
+                Safi Seaside Tours
+            </div>
+            <ul class="nav-links">
+                <li><a onclick="showSection('home')">Home</a></li>
+                <li><a onclick="showSection('about')">About</a></li>
+                <li><a onclick="showSection('tours')">Tours</a></li>
+                <li><a onclick="showSection('airport')">Airport</a></li>
+                <li><a onclick="showSection('gallery')">Gallery</a></li>
+                <li><a onclick="showSection('faq')">FAQ</a></li>
+                <li><a onclick="showSection('contact')">Contact</a></li>
+            </ul>
+            <button class="mobile-menu-btn">
+                <i class="fas fa-bars"></i>
+            </button>
+        </div>
+    </nav>
+
+    <!-- HOME PAGE -->
+    <div id="home" class="section active">
+        <div class="hero">
+            <div class="hero-content">
+                <h1>Guiding Unforgettable Journeys</h1>
+                <p class="subtitle">Experience the beauty, history, and charm of Nova Scotia</p>
+                <div style="display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap;">
+                    <button class="btn" onclick="showSection('tours')">
+                        <i class="fas fa-compass"></i> Explore Tours
+                    </button>
+                    <button class="btn btn-outline" onclick="showSection('contact')">
+                        <i class="fas fa-phone"></i> Contact Us
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <div class="section" style="display: block;">
+            <h2 class="section-title">Welcome to Safi Seaside Tours</h2>
+            <p class="section-subtitle">
+                Your trusted local guide for private and small-group adventures. Led by Asif Safi, an experienced multilingual guide with over 15 years of global tourism experience.
+            </p>
+
+            <div class="features">
+                <div class="feature">
+                    <div class="feature-icon"><i class="fas fa-car"></i></div>
+                    <h3>Door-to-Door Pickup</h3>
+                    <p>Convenient pickup from your hotel or accommodation</p>
+                </div>
+                <div class="feature">
+                    <div class="feature-icon"><i class="fas fa-utensils"></i></div>
+                    <h3>Complimentary Lobster Rolls</h3>
+                    <p>Authentic Nova Scotia cuisine included in every tour</p>
+                </div>
+                <div class="feature">
+                    <div class="feature-icon"><i class="fas fa-globe-americas"></i></div>
+                    <h3>Multilingual Guide</h3>
+                    <p>Expert communication in multiple languages</p>
+                </div>
+                <div class="feature">
+                    <div class="feature-icon"><i class="fas fa-award"></i></div>
+                    <h3>15+ Years Experience</h3>
+                    <p>Professional expertise and local insights</p>
+                </div>
+            </div>
+
+            <h2 class="section-title" style="margin-top: 4rem;">Featured Tours</h2>
+            <p class="section-subtitle">Discover the most beautiful destinations in Nova Scotia</p>
+            
+            <div class="tours-grid">
+                <div class="tour-card">
+                    <div class="tour-image gallery-lighthouse">
+                        <div class="tour-icon"><i class="fas fa-lighthouse"></i></div>
+                        <div class="tour-badge">Popular</div>
+                    </div>
+                    <div class="tour-content">
+                        <h3>Peggy's Cove Tour</h3>
+                        <p>Visit Canada's most iconic lighthouse and enjoy breathtaking coastal views</p>
+                        <div class="tour-price">$160 <span style="font-size: 1rem; color: #64748b;">CAD</span></div>
+                        <button class="btn" onclick="showSection('tours')">
+                            <i class="fas fa-info-circle"></i> Learn More
+                        </button>
+                    </div>
+                </div>
+                
+                <div class="tour-card">
+                    <div class="tour-image gallery-town">
+                        <div class="tour-icon"><i class="fas fa-home"></i></div>
+                        <div class="tour-badge">UNESCO Site</div>
+                    </div>
+                    <div class="tour-content">
+                        <h3>Lunenburg Tour</h3>
+                        <p>Explore the colorful UNESCO World Heritage town and maritime history</p>
+                        <div class="tour-price">$175 <span style="font-size: 1rem; color: #64748b;">CAD</span></div>
+                        <button class="btn" onclick="showSection('tours')">
+                            <i class="fas fa-info-circle"></i> Learn More
+                        </button>
+                    </div>
+                </div>
+                
+                <div class="tour-card">
+                    <div class="tour-image gallery-sunset">
+                        <div class="tour-icon"><i class="fas fa-star"></i></div>
+                        <div class="tour-badge">Best Value</div>
+                    </div>
+                    <div class="tour-content">
+                        <h3>Combo Tour</h3>
+                        <p>Experience both Peggy's Cove and Lunenburg in one amazing day</p>
+                        <div class="tour-price">$200 <span style="font-size: 1rem; color: #64748b;">CAD</span></div>
+                        <button class="btn" onclick="showSection('tours')">
+                            <i class="fas fa-info-circle"></i> Learn More
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="testimonials">
+                <h2 class="section-title">What Our Guests Say</h2>
+                <p class="section-subtitle">Real experiences from travelers around the world</p>
+                
+                <div class="testimonial">
+                    <div class="testimonial-stars">
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                    </div>
+                    <p class="testimonial-text">"An absolutely wonderful experience! Asif was knowledgeable, friendly, and made our trip unforgettable. The lobster rolls were delicious and the scenery was breathtaking!"</p>
+                    <p class="testimonial-author">
+                        <i class="fas fa-user-circle"></i> Sarah M., Toronto
+                    </p>
+                </div>
+                
+                <div class="testimonial">
+                    <div class="testimonial-stars">
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                    </div>
+                    <p class="testimonial-text">"Best tour we've ever taken! The personal touch and local insights made all the difference. We learned so much about Nova Scotia's rich history and culture."</p>
+                    <p class="testimonial-author">
+                        <i class="fas fa-user-circle"></i> Michael & Jennifer Thompson
+                    </p>
+                </div>
+                
+                <div class="testimonial">
+                    <div class="testimonial-stars">
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                    </div>
+                    <p class="testimonial-text">"Professional, comfortable, and so much fun. We saw everything we wanted and the comfortable vehicle made the long day enjoyable. Highly recommend!"</p>
+                    <p class="testimonial-author">
+                        <i class="fas fa-user-circle"></i> David Chen, Vancouver
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ABOUT US PAGE -->
+    <div id="about" class="section">
+        <h2 class="section-title">About Safi Seaside Tours</h2>
+        <p class="section-subtitle">Your trusted partner in Nova Scotia adventures</p>
+        
+        <div class="about-content">
+            <div class="about-image-card">
+                <i class="fas fa-user-tie" style="position: relative; z-index: 1;"></i>
+            </div>
+            <div class="about-text">
+                <h3>Our Story</h3>
+                <p>
+                    Safi Seaside Tours was founded with a passion for sharing the natural beauty and rich history of Nova Scotia with visitors from around the world. We believe that travel should be more than just sightseeing—it should be an immersive experience that connects you with the soul of a place.
+                </p>
+                <p>
+                    Led by Asif Safi, our tours combine professional expertise with genuine local hospitality. With over 15 years of global tourism experience, Asif brings multilingual capabilities and deep local knowledge to every journey.
+                </p>
+                <h3 style="margin-top: 2rem;">Why Choose Us?</h3>
+                <ul class="about-list">
+                    <li><i class="fas fa-check-circle"></i> Private and small-group tours for personalized experiences</li>
+                    <li><i class="fas fa-check-circle"></i> Multilingual guide with 15+ years experience</li>
+                    <li><i class="fas fa-check-circle"></i> Comfortable vehicles with door-to-door service</li>
+                    <li><i class="fas fa-check-circle"></i> Complimentary Nova Scotia Lobster Rolls</li>
+                    <li><i class="fas fa-check-circle"></i> Flexible itineraries and custom tours available</li>
+                    <li><i class="fas fa-check-circle"></i> Local insights and hidden gems</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <!-- TOURS PAGE -->
+    <div id="tours" class="section">
+        <h2 class="section-title">Tours & Experiences</h2>
+        <p class="section-subtitle">Choose your perfect Nova Scotia adventure</p>
+        
+        <div class="tour-card" style="margin-bottom: 3rem;">
+            <div class="tour-image gallery-lighthouse">
+                <div class="tour-icon"><i class="fas fa-lighthouse"></i></div>
+                <div class="tour-badge">Popular Choice</div>
+            </div>
+            <div class="tour-content">
+                <h3>Peggy's Cove Tour</h3>
+                <div class="tour-price">$160 <span style="font-size: 1rem; color: #64748b;">CAD per person</span></div>
+                <p>Experience the iconic Peggy's Cove Lighthouse, one of Canada's most photographed locations. Enjoy breathtaking coastal views, explore the charming fishing village, and learn about the area's rich maritime heritage from your expert guide.</p>
+                <ul class="tour-features">
+                    <li><i class="fas fa-clock"></i> Duration: 4-5 hours</li>
+                    <li><i class="fas fa-car"></i> Door-to-door pickup included</li>
+                    <li><i class="fas fa-utensils"></i> Complimentary Nova Scotia Lobster Roll</li>
+                    <li><i class="fas fa-camera"></i> Photo opportunities at the lighthouse</li>
+                    <li><i class="fas fa-user-tie"></i> Expert local guide commentary</li>
+                </ul>
+                <button class="btn" onclick="showSection('contact')">
+                    <i class="fas fa-calendar-check"></i> Book Now
+                </button>
+            </div>
+        </div>
+
+        <div class="tour-card" style="margin-bottom: 3rem;">
+            <div class="tour-image gallery-town">
+                <div class="tour-icon"><i class="fas fa-home"></i></div>
+                <div class="tour-badge">UNESCO Site</div>
+            </div>
+            <div class="tour-content">
+                <h3>Lunenburg Tour</h3>
+                <div class="tour-price">$175 <span style="font-size: 1rem; color: #64748b;">CAD per person</span></div>
+                <p>Discover the colorful UNESCO World Heritage town of Lunenburg. Walk through historic streets lined with vibrant buildings, visit the famous Bluenose II replica, and experience authentic Nova Scotia culture and maritime traditions.</p>
+                <ul class="tour-features">
+                    <li><i class="fas fa-clock"></i> Duration: 6-7 hours</li>
+                    <li><i class="fas fa-landmark"></i> UNESCO World Heritage Site tour</li>
+                    <li><i class="fas fa-utensils"></i> Complimentary lunch included</li>
+                    <li><i class="fas fa-ship"></i> Bluenose II and waterfront exploration</li>
+                    <li><i class="fas fa-store"></i> Local shops and galleries visit</li>
+                </ul>
+                <button class="btn" onclick="showSection('contact')">
+                    <i class="fas fa-calendar-check"></i> Book Now
+                </button>
+            </div>
+        </div>
+
+        <div class="tour-card" style="margin-bottom: 3rem;">
+            <div class="tour-image gallery-sunset">
+                <div class="tour-icon"><i class="fas fa-star"></i></div>
+                <div class="tour-badge">Best Value</div>
+            </div>
+            <div class="tour-content">
+                <h3>Peggy's Cove + Lunenburg Combo</h3>
+                <div class="tour-price">$200 <span style="font-size: 1rem; color: #64748b;">CAD per person</span></div>
+                <p>Get the best of both worlds! Experience the iconic lighthouse at Peggy's Cove and the historic charm of Lunenburg in one unforgettable full-day adventure. This comprehensive tour offers maximum value and memories.</p>
+                <ul class="tour-features">
+                    <li><i class="fas fa-clock"></i> Duration: 8-9 hours</li>
+                    <li><i class="fas fa-map-marked-alt"></i> Visit both famous locations</li>
+                    <li><i class="fas fa-utensils"></i> Complimentary meals included</li>
+                    <li><i class="fas fa-camera"></i> Comprehensive coastal experience</li>
+                    <li><i class="fas fa-heart"></i> Maximum value and memories</li>
+                </ul>
+                <button class="btn" onclick="showSection('contact')">
+                    <i class="fas fa-calendar-check"></i> Book Now
+                </button>
+            </div>
+        </div>
+
+        <div class="tour-card">
+            <div class="tour-image gallery-ocean">
+                <div class="tour-icon"><i class="fas fa-route"></i></div>
+                <div class="tour-badge">Customizable</div>
+            </div>
+            <div class="tour-content">
+                <h3>Custom Tours</h3>
+                <div class="tour-price">$175-$200 <span style="font-size: 1rem; color: #64748b;">CAD per person</span></div>
+                <p>Create your perfect Nova Scotia experience! We'll work with you to design a personalized itinerary based on your interests, schedule, and preferences. Whether it's photography, nature, history, or food—we'll craft your ideal day.</p>
+                <ul class="tour-features">
+                    <li><i class="fas fa-clock"></i> Flexible duration and destinations</li>
+                    <li><i class="fas fa-pencil-alt"></i> Personalized itinerary planning</li>
+                    <li><i class="fas fa-check-circle"></i> Special requests accommodated</li>
+                    <li><i class="fas fa-camera"></i> Photography tours available</li>
+                    <li><i class="fas fa-users"></i> Family-friendly options</li>
+                </ul>
+                <button class="btn" onclick="showSection('contact')">
+                    <i class="fas fa-envelope"></i> Inquire Now
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- AIRPORT TRANSFERS PAGE -->
+    <div id="airport" class="section">
+        <h2 class="section-title">Airport Transfer Services</h2>
+        <p class="section-subtitle">Professional transportation to and from Halifax Stanfield International Airport</p>
+        
+        <div class="about-content">
+            <div class="about-image-card">
+                <i class="fas fa-plane-arrival" style="position: relative; z-index: 1;"></i>
+            </div>
+            <div class="about-text">
+                <h3>Professional Airport Transportation</h3>
+                <p>
+                    Start or end your Nova Scotia journey in comfort with our private airport transfer service. We provide reliable, professional transportation between Halifax Stanfield International Airport and your accommodation, ensuring a stress-free travel experience.
+                </p>
+                <p>
+                    Our experienced drivers monitor flight schedules and adjust pickup times accordingly, so you never have to worry about delays. We're committed to making your arrival and departure as smooth as possible.
+                </p>
+                <h3 style="margin-top: 2rem;">Service Features</h3>
+                <ul class="about-list">
+                    <li><i class="fas fa-check-circle"></i> Comfortable, clean SUVs</li>
+                    <li><i class="fas fa-check-circle"></i> Professional, experienced drivers</li>
+                    <li><i class="fas fa-check-circle"></i> Flight tracking for pickup timing</li>
+                    <li><i class="fas fa-check-circle"></i> Meet & greet service</li>
+                    <li><i class="fas fa-check-circle"></i> Luggage assistance</li>
+                    <li><i class="fas fa-check-circle"></i> Child seats available upon request</li>
+                    <li><i class="fas fa-check-circle"></i> 24/7 availability</li>
+                    <li><i class="fas fa-check-circle"></i> Fixed rates - no surprises</li>
+                </ul>
+                <div style="margin-top: 2rem;">
+                    <button class="btn" onclick="showSection('contact')">
+                        <i class="fas fa-calendar-check"></i> Book Airport Transfer
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- GALLERY PAGE -->
+    <div id="gallery" class="section">
+        <h2 class="section-title">Gallery</h2>
+        <p class="section-subtitle">Explore the beauty of Nova Scotia through our tour experiences</p>
+        
+        <div class="gallery-grid">
+            <div class="gallery-item gallery-lighthouse">
+                <div class="gallery-label"><i class="fas fa-lighthouse"></i> Peggy's Cove</div>
+            </div>
+            <div class="gallery-item gallery-ocean">
+                <div class="gallery-label"><i class="fas fa-water"></i> Coastal Views</div>
+            </div>
+            <div class="gallery-item gallery-town">
+                <div class="gallery-label"><i class="fas fa-city"></i> Lunenburg Town</div>
+            </div>
+            <div class="gallery-item gallery-boat">
+                <div class="gallery-label"><i class="fas fa-ship"></i> Maritime Heritage</div>
+            </div>
+            <div class="gallery-item gallery-lobster">
+                <div class="gallery-label"><i class="fas fa-fish"></i> Fresh Lobster</div>
+            </div>
+            <div class="gallery-item gallery-sunset">
+                <div class="gallery-label"><i class="fas fa-sun"></i> Sunset Views</div>
+            </div>
+        </div>
+    </div>
+
+    <!-- FAQ PAGE -->
+    <div id="faq" class="section">
+        <h2 class="section-title">Frequently Asked Questions</h2>
+        <p class="section-subtitle">Everything you need to know about our tours</p>
+        
+        <div class="faq-item">
+            <div class="faq-question">
+                <i class="fas fa-question-circle"></i>
+                How do I book a tour?
+            </div>
+            <div class="faq-answer">You can book by calling us at 1 (902) 402-7263, emailing info@safiseasidetours.ca, using WhatsApp, or filling out our contact form. We'll confirm availability and arrange all details with you promptly.</div>
+        </div>
+
+        <div class="faq-item">
+            <div class="faq-question">
+                <i class="fas fa-question-circle"></i>
+                What is your cancellation policy?
+            </div>
+            <div class="faq-answer">We offer free cancellation up to 24 hours before your scheduled tour. Cancellations within 24 hours may be subject to a fee. Weather-related cancellations are handled on a case-by-case basis with full flexibility.</div>
+        </div>
+
+        <div class="faq-item">
+            <div class="faq-question">
+                <i class="fas fa-question-circle"></i>
+                Are meals included in the tours?
+            </div>
+            <div class="faq-answer">Yes! All tours include complimentary Nova Scotia Lobster Rolls (or alternative options for dietary restrictions). Full-day tours may include additional meals. Please inform us of any dietary requirements when booking.</div>
+        </div>
+
+        <div class="faq-item">
+            <div class="faq-question">
+                <i class="fas fa-question-circle"></i>
+                What time are pickup times?
+            </div>
+            <div class="faq-answer">Pickup times are flexible based on your preference and tour selection. Most tours begin between 8:00 AM and 10:00 AM. We'll coordinate the exact time that works best for you when you book.</div>
+        </div>
+
+        <div class="faq-item">
+            <div class="faq-question">
+                <i class="fas fa-question-circle"></i>
+                How many people can join a tour?
+            </div>
+            <div class="faq-answer">We specialize in private and small-group tours. Our comfortable vehicles can accommodate up to 6 passengers. For larger groups, please contact us for special arrangements and group rates.</div>
+        </div>
+
+        <div class="faq-item">
+            <div class="faq-question">
+                <i class="fas fa-question-circle"></i>
+                What should I bring on the tour?
+            </div>
+            <div class="faq-answer">We recommend comfortable walking shoes, weather-appropriate clothing (layers are best), sunscreen, and a camera. Water and snacks are provided in the vehicle. Don't forget your sense of adventure!</div>
+        </div>
+
+        <div class="faq-item">
+            <div class="faq-question">
+                <i class="fas fa-question-circle"></i>
+                Are the tours suitable for children and seniors?
+            </div>
+            <div class="faq-answer">Absolutely! Our tours are designed to be comfortable and accessible for all ages. We can adjust the pace and activities based on your group's needs. Child seats are available upon request.</div>
+        </div>
+
+        <div class="faq-item">
+            <div class="faq-question">
+                <i class="fas fa-question-circle"></i>
+                Do you offer tours in other languages?
+            </div>
+            <div class="faq-answer">Yes! Our guide, Asif Safi, is multilingual with over 15 years of international tourism experience. Please inquire about specific language requirements when booking your tour.</div>
+        </div>
+
+        <div class="faq-item">
+            <div class="faq-question">
+                <i class="fas fa-question-circle"></i>
+                What happens if the weather is bad?
+            </div>
+            <div class="faq-answer">Nova Scotia weather can be unpredictable! We monitor conditions closely and will contact you if any changes are needed. We can reschedule or adjust the itinerary as necessary to ensure your safety and enjoyment.</div>
+        </div>
+    </div>
+
+    <!-- CONTACT PAGE -->
+    <div id="contact" class="section">
+        <h2 class="section-title">Contact Us</h2>
+        <p class="section-subtitle">Ready to experience Nova Scotia? Get in touch with us today!</p>
+
+        <div class="contact-container">
+            <div class="contact-form">
+                <h3 style="color: var(--primary); margin-bottom: 2rem; font-family: 'Playfair Display', serif; font-size: 2rem;">Send Us a Message</h3>
+                <form onsubmit="handleSubmit(event)">
+                    <div class="form-group">
+                        <label><i class="fas fa-user"></i> Full Name *</label>
+                        <input type="text" required placeholder="Your name">
+                    </div>
+                    <div class="form-group">
+                        <label><i class="fas fa-envelope"></i> Email *</label>
+                        <input type="email" required placeholder="your@email.com">
+                    </div>
+                    <div class="form-group">
+                        <label><i class="fas fa-phone"></i> Phone</label>
+                        <input type="tel" placeholder="Your phone number">
+                    </div>
+                    <div class="form-group">
+                        <label><i class="fas fa-compass"></i> Tour Interest</label>
+                        <select>
+                            <option>Peggy's Cove Tour ($160)</option>
+                            <option>Lunenburg Tour ($175)</option>
+                            <option>Combo Tour ($200)</option>
+                            <option>Custom Tour ($175-$200)</option>
+                            <option>Airport Transfer</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label><i class="fas fa-comment"></i> Message *</label>
+                        <textarea required placeholder="Tell us about your preferred date, group size, and any special requests..."></textarea>
+                    </div>
+                    <button type="submit" class="btn" style="width: 100%;">
+                        <i class="fas fa-paper-plane"></i> Send Message
+                    </button>
+                </form>
+            </div>
+
+            <div class="contact-info-card">
+                <h3>Get In Touch</h3>
+                <div class="contact-item">
+                    <i class="fas fa-phone-alt"></i>
+                    <div>
+                        <strong>Phone</strong><br>
+                        1 (902) 402-7263
+                    </div>
+                </div>
+                <div class="contact-item">
+                    <i class="fas fa-envelope"></i>
+                    <div>
+                        <strong>Email</strong><br>
+                        info@safiseasidetours.ca
+                    </div>
+                </div>
+                <div class="contact-item">
+                    <i class="fab fa-whatsapp"></i>
+                    <div>
+                        <strong>WhatsApp</strong><br>
+                        Available for quick inquiries
+                    </div>
+                </div>
+                <div class="contact-item">
+                    <i class="fas fa-map-marker-alt"></i>
+                    <div>
+                        <strong>Location</strong><br>
+                        Halifax, Nova Scotia, Canada
+                    </div>
+                </div>
+                <div style="margin-top: 2rem; padding-top: 2rem; border-top: 1px solid rgba(255,255,255,0.2);">
+                    <p><strong>Business Hours</strong></p>
+                    <p style="margin-top: 0.5rem;">Tours available daily<br>Airport transfers 24/7</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- FOOTER -->
+    <footer>
+        <div class="footer-content">
+            <div class="footer-section">
+                <h3><i class="fas fa-water"></i> Safi Seaside Tours</h3>
+                <p style="font-style: italic; opacity: 0.8;">"Guiding Unforgettable Journeys"</p>
+                <p style="margin-top: 1rem;">Your trusted local guide for private and small-group adventures in beautiful Nova Scotia.</p>
+                <div class="social-links">
+                    <a href="#"><i class="fab fa-facebook-f"></i></a>
+                    <a href="#"><i class="fab fa-instagram"></i></a>
+                    <a href="#"><i class="fab fa-whatsapp"></i></a>
+                    <a href="#"><i class="fab fa-tripadvisor"></i></a>
+                </div>
+            </div>
+            
+            <div class="footer-section">
+                <h3>Quick Links</h3>
+                <a onclick="showSection('home')"><i class="fas fa-home"></i> Home</a>
+                <a onclick="showSection('about')"><i class="fas fa-info-circle"></i> About Us</a>
+                <a onclick="showSection('tours')"><i class="fas fa-compass"></i> Tours & Experiences</a>
+                <a onclick="showSection('airport')"><i class="fas fa-plane"></i> Airport Transfers</a>
+            </div>
+            
+            <div class="footer-section">
+                <h3>Resources</h3>
+                <a onclick="showSection('gallery')"><i class="fas fa-images"></i> Gallery</a>
+                <a onclick="showSection('faq')"><i class="fas fa-question-circle"></i> FAQ</a>
+                <a onclick="showSection('contact')"><i class="fas fa-envelope"></i> Contact Us</a>
+            </div>
+            
+            <div class="footer-section">
+                <h3>Contact Info</h3>
+                <p><i class="fas fa-phone"></i> 1 (902) 402-7263</p>
+                <p><i class="fas fa-envelope"></i> info@safiseasidetours.ca</p>
+                <p><i class="fas fa-map-marker-alt"></i> Halifax, Nova Scotia</p>
+                <p style="margin-top: 1.5rem;"><strong>Follow Us</strong></p>
+            </div>
+        </div>
+        
+        <div class="footer-bottom">
+            <p>&copy; 2025 Safi Seaside Tours. All rights reserved.</p>
+            <p style="margin-top: 0.5rem; opacity: 0.8;">Designed with <i class="fas fa-heart" style="color: var(--accent);"></i> for Nova Scotia travelers</p>
+        </div>
+    </footer>
+
+    <script>
+        function showSection(sectionId) {
+            const sections = document.querySelectorAll('.section');
+            sections.forEach(section => {
+                section.classList.remove('active');
+            });
+            
+            const selectedSection = document.getElementById(sectionId);
+            if (selectedSection) {
+                selectedSection.classList.add('active');
+            }
+            
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+        
+        function handleSubmit(event) {
+            event.preventDefault();
+            alert('Thank you for your interest! We will contact you shortly to confirm your booking. 🌊');
+            event.target.reset();
+        }
+        
+        window.onload = function() {
+            showSection('home');
+        };
+    </script>
+</body>
+</html>
